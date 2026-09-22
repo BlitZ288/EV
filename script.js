@@ -87,10 +87,28 @@ applicationForm.addEventListener("submit", async event => {
     }
 });
 
+// Сохраняем исходный порядок: loop переставляет слайды в DOM.
+const certificateImages = Array.from(document.querySelectorAll(".certificate"));
+
+function loadCertificates(swiper) {
+    const count = certificateImages.length;
+    for (const offset of [0, -1, 1]) {
+        const image = certificateImages[(swiper.realIndex + offset + count) % count];
+        if (image?.dataset.src) {
+            image.src = image.dataset.src;
+            image.removeAttribute("data-src");
+        }
+    }
+}
+
 const certificatesSwiper = new Swiper(".certificates-swiper", {
     slidesPerView: 1,
     spaceBetween: 24,
     loop: true,
+    on: {
+        init: loadCertificates,
+        realIndexChange: loadCertificates,
+    },
     navigation: {
         nextEl: ".certificates-swiper .swiper-button-next",
         prevEl: ".certificates-swiper .swiper-button-prev",
