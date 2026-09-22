@@ -19,7 +19,7 @@
 
     <title>Document</title>
 </head>
-<body>
+<body id="top">
     <header class="header">
         <div class="container header__inner">
             <div class="logo">
@@ -27,11 +27,11 @@
             </div>
 
             <nav class="nav">
-                <a href="">Обо мне</a>
-                <a href="">О занятиях</a>
-                <a href="">Форматы и цены</a>
-                <a href="">Результаты</a>
-                <a href="">Отзывы</a>
+                <a href="#about">Обо мне</a>
+                <a href="#lessons">О занятиях</a>
+                <a href="#prices">Форматы и цены</a>
+                <a href="#results">Результаты</a>
+                <a href="#reviews">Отзывы</a>
                 <a href="#"><img src="assets/icons/tg.svg" alt="телеграмм"></a>
             </nav>
         </div>
@@ -42,13 +42,11 @@
                 <div class="hero__content">
                     <div class="hero__text">
                         <h1 class="hero__title">
-                            Со мной вы <br> наконец заговорите <br> по-английcки!
+                            Со мной вы <br> наконец заговорите по-английcки!
                         </h1>
                         <p class="hero__description">
-                            Онлайн-уроки для взрослых и студентов.<br>
-                            Готовлю к IELTS Academic и помогаю<br>
-                            уверенно использовать английский<br>
-                            в жизни, учебе и работе.
+                            <span>Онлайн-уроки для взрослых и студентов.</span>
+                            <span>Готовлю к IELTS Academic и помогаю уверенно использовать английский в жизни, учебе и работе.</span>
                         </p>
                         <button class="button">Оставить заявку</button>
                         <div class="hero__stats">
@@ -74,7 +72,7 @@
                 </div>
             </div>
         </section>
-            <section class="about">
+            <section class="about" id="about">
                 <div class="container">
                     <h2>Обо мне</h2>   
                     <div class="about__content"> 
@@ -128,13 +126,6 @@
                                             <img
                                                 class="certificate"
                                                 src="assets/image/certs/sert4.png"
-                                                alt="Сертификат"
-                                            >
-                                        </div>
-                                         <div class="swiper-slide">
-                                            <img
-                                                class="certificate"
-                                                src="assets/image/certs/sert5.png"
                                                 alt="Сертификат"
                                             >
                                         </div>
@@ -319,9 +310,8 @@
                             </div> 
                     </div>
                 </div>
-            </div>
             </section>
-        <section class="stady">
+        <section class="stady" id="lessons">
             <div class="container">
                 <h2>О занятиях</h2>
                 <div class="stady__content">
@@ -333,7 +323,7 @@
                             <h3>Говорим с первого занятия </h3>      
                         </div>
                         <p class="card__description text">
-                            Меньше абстрактной теории, <br> больше живой практики <br> и реального использования языка. <br> Моя цель – решить вашу задачу,<br> а не учебник.
+                            Меньше абстрактной теории, больше живой практики и реального использования языка. Моя цель – решить вашу задачу, а не учебник.
                         </p>
                     </div>
                     <div class="card">
@@ -383,7 +373,7 @@
                 </div>
             </div>
         </section>
-        <section class="price">
+        <section class="price" id="prices">
             <div class="container">
                 <h2>Форматы и цены</h2>
                 <div class="price__content">
@@ -405,9 +395,6 @@
                             </div>                         
                         </div>
                        
-                        <div class="button__container">
-                            <button class="button button__secondary">Выбрать формат</button>
-                        </div>
                     </div>
                     <div class="card card--wide card__small togl card__border">                           
                       <div class="card__header">
@@ -434,9 +421,6 @@
                             </div>                            
                         </div>  
                                             
-                        <div class="button__container">
-                            <button class="button button__secondary">Выбрать формат</button>
-                        </div>
                     </div>
                      <div class="card card__small togl">    
                         <div class="card__header">
@@ -461,9 +445,6 @@
                             </div>
                         </div>
                         
-                        <div class="button__container">
-                            <button class="button button__secondary">Выбрать формат</button>
-                        </div>
                     </div>                    
                 </div>
             </div>
@@ -497,42 +478,223 @@
                         </p>
                     </div>
                 </div>
-                <form class="form">
-                    <div class="form__title">Оставить заявку</div>
-                    <div>
+                <form class="form" id="application" aria-labelledby="application-title">
+                    <h3 class="form__title" id="application-title">Оставить заявку</h3>
+                    <div class="form__content">
                         <div class="column">
                             <div class="input">
                                 <label for="name">Имя</label>
-                                <input id="name" class="form__input"/>
+                                <input id="name" name="name" type="text" autocomplete="given-name" class="form__input" required aria-describedby="name-error"/>
+                                <span class="form__error" id="name-error">Поле обязательно для заполнения</span>
                             </div>
                             <div class="input">
-                                <label for="time">Удобное время занятий</label>
-                                <select name="form__select" id="time"></select>
+                                <span id="time-label" class="form__label">Удобное время занятий</span>
+                                <details class="time-select">
+                                    <summary class="form__select" aria-labelledby="time-label time-value">
+                                        <span id="time-value">Выберите время</span>
+                                        <img src="assets/icons/select-arrow.svg" alt="" class="time-select__arrow">
+                                    </summary>
+                                    <div class="time-select__options" role="group" aria-labelledby="time-label">
+                                        <label class="time-select__option"><input type="checkbox" name="time" value="Понедельник 13:00">Понедельник 13:00</label>
+                                        <label class="time-select__option"><input type="checkbox" name="time" value="Вторник 12:30">Вторник 12:30</label>
+                                        <label class="time-select__option"><input type="checkbox" name="time" value="Вторник 14:00">Вторник 14:00</label>
+                                        <label class="time-select__option"><input type="checkbox" name="time" value="Вторник 18:00">Вторник 18:00</label>
+                                        <label class="time-select__option"><input type="checkbox" name="time" value="Среда 18:00">Среда 18:00</label>
+                                        <label class="time-select__option"><input type="checkbox" name="time" value="Пятница 12:00">Пятница 12:00</label>
+                                        <label class="time-select__option"><input type="checkbox" name="time" value="Пятница 18:00">Пятница 18:00</label>
+                                        <label class="time-select__option"><input type="checkbox" name="time" value="Пятница 19:30">Пятница 19:30</label>
+                                        <input class="time-select__custom" name="time-custom" type="text" aria-label="Свой вариант времени занятий" placeholder="Свой вариант, если предложенные не подходят">
+                                    </div>
+                                </details>
                             </div>
                             <div class="input">
-                                <label for="lavel">Как оцениваете свой уровень?</label>
-                                <input id="lavel" class="form__input"/>
+                                <label for="level">Как оцениваете свой уровень?</label>
+                                <input id="level" name="level" type="text" class="form__input"/>
                             </div>
                         </div>
                         <div class="column">
                             <div class="input">
                                 <label for="social">Ссылка на страницу VK или Telegram</label>
-                                <input id="social" class="form__input"/>
+                                <input id="social" name="social" type="text" class="form__input" required aria-describedby="social-error"/>
+                                <span class="form__error" id="social-error">Поле обязательно для заполнения</span>
                             </div>
                             <div class="input">
-                                <label for="wehere">Где занимались английским ранее?</label>
-                                <input id="wehere" class="form__input"/>
+                                <label for="experience">Где занимались английским ранее?</label>
+                                <input id="experience" name="experience" type="text" class="form__input"/>
                             </div>
                             <div class="input">
                                 <label for="target">Каких целей хотите достичь?</label>
-                                <input id="target" class="form__input"/>
+                                <input id="target" name="target" type="text" class="form__input"/>
                             </div>
                         </div>
                     </div>
+                    <button class="button form__submit" type="submit">Оставить заявку</button>
+                    <p class="form__status" role="status" hidden></p>
                 </form>
+                <p class="form__caption"><a href="terms.html">Условия работы</a> — здесь можно ознакомиться с тем, как всё устроено</p>
+            </div>
+        </section>
+        <section class="results" id="results" aria-labelledby="results-title">
+            <div class="container">
+                <h2 id="results-title">Результаты учеников</h2>
+                <div class="swiper stories-swiper results-swiper">
+                    <div class="swiper-wrapper">
+                        <article class="swiper-slide result-card">
+                            <img class="result-card__icon" src="assets/icons/iconlist.svg" alt="" width="72" height="72">
+                            <h3>IELTS 6.0</h3>
+                            <p class="text">После долгого перерыва в английском за 20 занятий подготовились к IELTS Academic для иммиграции в Канаду, отработав все разделы и экзаменационные стратегии. <br> Результат – IELTS 6.0, чего оказалось достаточно для иммиграции и дальнейшего переезда в Канаду.</p>
+                            <p class="result-card__name text">Владислав, 40 лет</p>
+                        </article>
+                        <article class="swiper-slide result-card">
+                            <img class="result-card__icon" src="assets/icons/iconlist.svg" alt="" width="72" height="72">
+                            <h3>IELTS 6.5</h3>
+                            <p class="text">За полгода подготовки к IELTS Academic при уровне около B1 мы разобрали все четыре раздела, стратегии и тайминг, уделив особое внимание Speaking. <br> Результат – IELTS 6.5, чего хватило для поступления в магистратуру в Италии. Сейчас Алина завершила первый год обучения на английском.</p>
+                            <p class="result-card__name text">Алина, 23 года</p>
+                        </article>
+                        <article class="swiper-slide result-card">
+                            <img class="result-card__icon" src="assets/icons/iconlist.svg" alt="" width="72" height="72">
+                            <h3>IELTS 6.5</h3>
+                            <p class="text">За 9 месяцев неспешной подготовки к IELTS Academic разобрали все разделы экзамена, уделив особое внимание академическому письму и таймингу. <br> Результат – IELTS 6.5, несмотря на стресс на экзамене, этого балла было достаточно для поступления в зарубежную магистратуру.</p>
+                            <p class="result-card__name text">Алина, 22 года</p>
+                        </article>
+                        <article class="swiper-slide result-card">
+                            <img class="result-card__icon" src="assets/icons/iconstudy.svg" alt="" width="72" height="72">
+                            <h3>«5» на гос. экзамене</h3>
+                            <p class="text">За год занятий 1–2 раза в неделю мы закрыли пробелы, сняли страх ошибок и языковой барьер. Подняли уровень с начала B1 до уверенного B2 – в том числе через подкасты, книги и выступление на международной конференции. <br> Результат – «5» на госэкзамене, а также уверенное общение в путешествиях и speaking club’ах.</p>
+                            <p class="result-card__name text">Анастасия, 24 года</p>
+                        </article>
+                        <article class="swiper-slide result-card">
+                            <img class="result-card__icon" src="assets/icons/icontalk.svg" alt="" width="72" height="72">
+                            <h3>Уверенное общение</h3>
+                            <p class="text">За 6 месяцев занятий раз в неделю мы прокачали аудирование, отработали small talk и разобрали правила общения на английском в разных ситуациях. <br> Результат – уверенная и расслабленная речь, пропал страх непредвиденных ситуаций, а английский вышел за рамки работы и стал частью жизни.</p>
+                            <p class="result-card__name text">Александра, 40 лет</p>
+                        </article>
+                        <article class="swiper-slide result-card">
+                            <img class="result-card__icon" src="assets/icons/icontalk.svg" alt="" width="72" height="72">
+                            <h3>Свободное общение</h3>
+                            <p class="text">За год занятий раз в неделю расширили словарный запас и грамматику, много работали с материалами – статьями, подкастами, лекциями и интервью. <br> Результат – свободно говорит практически на любые темы, спокойно читает книги и уверенно воспринимает живую речь носителей.</p>
+                            <p class="result-card__name text">Ирина, 63 года</p>
+                        </article>
+                        <article class="swiper-slide result-card">
+                            <img class="result-card__icon" src="assets/icons/icontalk.svg" alt="" width="72" height="72">
+                            <h3>Речь без барьеров</h3>
+                            <p class="text">За 9 месяцев занятий мы закрыли пробелы в грамматике, довели основные конструкции до автоматизма и поработали над связностью речи. <br> Результат — свободнее и увереннее говорит на разные темы, точнее выражает мысли, лучше понимает фильмы, YouTube и разные акценты.</p>
+                            <p class="result-card__name text">Елизавета, 22 года</p>
+                        </article>
+                        <article class="swiper-slide result-card">
+                            <img class="result-card__icon" src="assets/icons/iconstudy.svg" alt="" width="72" height="72">
+                            <h3>ЕГЭ 75 баллов</h3>
+                            <p class="text">За месяц и 12 занятий подготовились к ЕГЭ после пробного результата в 46 баллов –разобрали сложные задания, стратегии, тайминг, повторили и активировали необходимую лексику. <br> Результат – 75 баллов на экзамене, несмотря на короткие сроки, и поступление в желаемый вуз.</p>
+                            <p class="result-card__name text">Анастасия, 18 лет</p>
+                        </article>
+                        <article class="swiper-slide result-card">
+                            <img class="result-card__icon" src="assets/icons/iconstudy.svg" alt="" width="72" height="72">
+                            <h3>САЕ С1</h3>
+                            <p class="text">За 2 месяца и 8 занятий по 90 минут подготовились к CAE C1, сделав упор на письменную часть, говорение и стратегии экзамена – отработали форматы, тайминг, лексику и выявленные пробелы. <br> Результат – C1 (180/210), максимальный балл за Use of English и уверенное выполнение устной и письменной частей.</p>
+                            <p class="result-card__name text">Юлия, 30 лет</p>
+                        </article>
+                        <article class="swiper-slide result-card">
+                            <img class="result-card__icon" src="assets/icons/icontalk.svg" alt="" width="72" height="72">
+                            <h3>А1 → В1</h3>
+                            <p class="text">За несколько лет занятий раз в неделю прошла путь от A1 до B1, постепенно развивая разговорную речь и привыкая использовать английский в повседневной жизни без перегрузки. <br> Результат – уверенное общение на бытовые темы и поездки за границу, без языкового барьера в общении с носителями.</p>
+                            <p class="result-card__name text">Юлия, 36 лет</p>
+                        </article>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+        <section class="reviews" id="reviews" aria-labelledby="reviews-title">
+            <div class="container">
+                <h2 id="reviews-title">Отзывы</h2>
+                <div class="swiper stories-swiper reviews-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img1.png" alt="Отзыв ученика 1" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img2.png" alt="Отзыв ученика 2" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img31.png" alt="Отзыв ученика 3, часть 1" loading="lazy">
+                            <img src="assets/image/reviews/img32.png" alt="Отзыв ученика 3, часть 2" loading="lazy">
+                            <img src="assets/image/reviews/img33.png" alt="Отзыв ученика 3, часть 3" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img4.png" alt="Отзыв ученика 4" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img5.png" alt="Отзыв ученика 5" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img6.png" alt="Отзыв ученика 6" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img7.png" alt="Отзыв ученика 7" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img8.png" alt="Отзыв ученика 8" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img9.png" alt="Отзыв ученика 9" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img10.png" alt="Отзыв ученика 10" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img11.png" alt="Отзыв ученика 11" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img12.png" alt="Отзыв ученика 12" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img13.png" alt="Отзыв ученика 13" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img14.png" alt="Отзыв ученика 14" loading="lazy">
+                        </div>
+                        <div class="swiper-slide review-card">
+                            <img src="assets/image/reviews/img15.png" alt="Отзыв ученика 15" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
             </div>
         </section>
     </main>
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__identity">
+                <a href="#top" aria-label="В начало страницы"><img class="footer__logo" src="assets/image/Logo.svg" alt="Agadzhanova English" width="145" height="41"></a>
+                <address class="footer__contacts">
+                    <span>ИП Агаджанова Евгения Эдуардовна</span>
+                    <span>ОГРНИП 319507400036600, ИНН 502103395534</span>
+                    <a href="mailto:eagadzhanova@yandex.ru">eagadzhanova@yandex.ru</a>
+                    <a href="tel:+79251826136">+7(925)182-61-36</a>
+                </address>
+            </div>
+            <div class="footer__columns">
+                <nav class="footer__nav" aria-label="Навигация в подвале">
+                    <a href="#about">Обо мне</a>
+                    <a href="#lessons">О занятиях</a>
+                    <a href="#prices">Форматы и цены</a>
+                    <a href="#results">Результаты</a>
+                    <a href="#reviews">Отзывы</a>
+                </nav>
+                <!-- Добавьте ссылки после размещения юридических документов. -->
+                <div class="footer__legal">
+                    <span>Политика конфиденциальности</span>
+                    <span>Публичная оферта</span>
+                    <span>Условия возврата средств</span>
+                </div>
+            </div>
+            <!-- Адреса профилей пока не предоставлены. -->
+            <div class="footer__social">
+                <img src="assets/icons/footer-tg.svg" alt="Telegram" width="40" height="40">
+                <img src="assets/icons/vk.svg" alt="ВКонтакте" width="40" height="40">
+            </div>
+        </div>
+    </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="script.js"></script>
