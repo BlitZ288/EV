@@ -389,6 +389,23 @@ img {
 
 /*price*/
 
+.price__content {
+    align-items: start;
+}
+
+.price__content > .card {
+    min-height: 477px;
+    justify-content: flex-start;
+}
+
+.price .card__description {
+    flex: 1;
+}
+
+.price .caption {
+    margin-top: auto;
+}
+
 .card__small {
     padding: 24px;
 }
@@ -435,12 +452,28 @@ img {
     justify-content: center;
 
 }
-.caption  a{
+.tariff-details-toggle {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
     font-size: var(--font-size-caption);
     line-height: var(--line-height-text);
     font-family: var(--font-main);
+    font-weight: 300;
     color: var(--color-grey);
     text-decoration: underline;
+    text-underline-position: under;
+}
+
+.tariff-details-toggle:hover {
+    color: var(--color-night);
+}
+
+.tariff-details-toggle:focus-visible {
+    outline: 2px solid var(--color-night);
+    outline-offset: 4px;
+    border-radius: 2px;
 }
 
 .tariff-card__title {

@@ -1,3 +1,14 @@
+// Каждая карточка раскрывает только своё описание.
+document.querySelectorAll(".tariff-details-toggle").forEach(button => {
+    const details = document.getElementById(button.getAttribute("aria-controls"));
+    button.addEventListener("click", () => {
+        const expanded = button.getAttribute("aria-expanded") !== "true";
+        button.setAttribute("aria-expanded", String(expanded));
+        button.textContent = expanded ? "Скрыть" : "Подробнее";
+        details.hidden = !expanded;
+    });
+});
+
 // Время занятий: можно выбрать несколько вариантов и дописать свой.
 const timeSelect = document.querySelector(".time-select");
 const timeValue = document.querySelector("#time-value");
