@@ -131,12 +131,16 @@ const certificatesSwiper = new Swiper(".certificates-swiper", {
     },
 });
 
-// В обоих блоках показываем по три карточки, как в desktop-макете.
+// На планшете листаем по одной карточке, на desktop — по три.
 document.querySelectorAll(".stories-swiper").forEach(slider => {
     new Swiper(slider, {
         slidesPerView: 3,
         slidesPerGroup: 3,
         spaceBetween: 24,
+        breakpoints: {
+            768: { slidesPerView: "auto", slidesPerGroup: 1, spaceBetween: 20 },
+            1200: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 24 },
+        },
         grabCursor: true,
         keyboard: { enabled: true, onlyInViewport: true },
         pagination: {
