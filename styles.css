@@ -655,6 +655,10 @@ img {
     display: none;
 }
 
+#time-value[data-placeholder="true"] {
+    color: var(--color-grey);
+}
+
 #time-value {
     overflow: hidden;
     white-space: nowrap;
@@ -1177,7 +1181,8 @@ img {
         align-items: center;
         gap: 2px;
         bottom: 0;
-        height: 14px;
+        height: 16px;
+        padding-inline: 3px;
     }
 
     .certificates-swiper .swiper-pagination .swiper-pagination-bullet {
@@ -1281,7 +1286,6 @@ img {
     }
 
     .how__content > .card {
-        min-height: 310px;
         justify-content: flex-start;
     }
 
@@ -1350,7 +1354,8 @@ img {
 
     .result-card,
     .review-card {
-        margin-right: var(--card-gap);
+        /* Swiper сам задаёт промежуток; CSS-margin удваивает его в расчёте auto. */
+        margin-right: 0;
     }
 
     .result-card__name {
@@ -1430,15 +1435,6 @@ img {
         min-height: 0;
     }
 
-    .footer__inner {
-        flex-wrap: wrap;
-        row-gap: 24px;
-    }
-
-    .footer__identity {
-        width: 190px;
-    }
-
     .footer__columns {
         flex: 1;
         gap: 20px;
@@ -1446,8 +1442,4 @@ img {
         font-size: 12px;
     }
 
-    .footer__social {
-        width: 100%;
-        justify-content: flex-end;
-    }
 }

@@ -18,6 +18,7 @@ timeSelect.addEventListener("input", () => {
     const selected = Array.from(timeSelect.querySelectorAll("input:checked"), input => input.value);
     if (customTime.value.trim()) selected.push(customTime.value.trim());
     timeValue.textContent = selected.join(", ") || "Выберите время";
+    timeValue.dataset.placeholder = String(selected.length === 0);
     timeValue.title = timeValue.textContent;
 });
 
@@ -81,6 +82,7 @@ applicationForm.addEventListener("submit", async event => {
         }
         applicationForm.reset();
         timeValue.textContent = "Выберите время";
+        timeValue.dataset.placeholder = "true";
         timeValue.removeAttribute("title");
         timeSelect.open = false;
         status.dataset.state = "success";
