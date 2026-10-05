@@ -140,6 +140,7 @@ document.querySelectorAll(".stories-swiper").forEach(slider => {
         slidesPerGroup: 3,
         spaceBetween: 24,
         breakpoints: {
+            0: { slidesPerView: "auto", slidesPerGroup: 1, spaceBetween: 20 },
             768: { slidesPerView: "auto", slidesPerGroup: 1, spaceBetween: 20 },
             1200: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 24 },
         },
@@ -158,5 +159,23 @@ document.querySelectorAll(".stories-swiper").forEach(slider => {
 document.querySelectorAll(".hero .button").forEach(button => {
     button.addEventListener("click", () => {
         applicationForm.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+});
+
+const menuToggle = document.querySelector(".menu-toggle");
+const mainNavigation = document.querySelector("#main-navigation");
+
+menuToggle?.addEventListener("click", () => {
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", String(!isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Открыть меню" : "Закрыть меню");
+    mainNavigation.classList.toggle("is-open", !isOpen);
+});
+
+mainNavigation?.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        menuToggle?.setAttribute("aria-expanded", "false");
+        menuToggle?.setAttribute("aria-label", "Открыть меню");
+        mainNavigation.classList.remove("is-open");
     });
 });
