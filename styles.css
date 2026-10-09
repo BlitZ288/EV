@@ -34,6 +34,7 @@
     --icon-size: 72px;
     --content-width: 1312px;
     --card-gap: 24px;
+    --pagination-gap: 6px;
     --card-padding: 32px;
     --card-radius: 24px;
     --section-space: 100px;
@@ -103,6 +104,7 @@ img {
     top: 0;
     z-index: 20;
     background: var(--color-white);
+    box-shadow: 0 4px 2px rgb(38 66 131 / 5%);
 }
 
 .container {
@@ -395,7 +397,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2.5px;
+    gap: var(--pagination-gap);
     padding-inline: 3px;
 }
 
@@ -834,7 +836,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2.5px;
+    gap: var(--pagination-gap);
 }
 
 .stories-swiper .swiper-pagination .swiper-pagination-bullet {
@@ -1056,6 +1058,7 @@ img {
         --form-columns: 1;
         --icon-size: 52px;
         --card-gap: 16px;
+        --pagination-gap: 3px;
         --card-padding: 24px;
         --section-space: 40px;
     }
@@ -1292,11 +1295,11 @@ img {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 2.5px;
+        gap: var(--pagination-gap);
     }
 
     .certificates-swiper .swiper-pagination .swiper-pagination-bullet {
-        width: min(8px, calc((100% - 67.5px) / 28));
+        width: min(8px, calc((100% - 27 * var(--pagination-gap)) / 28));
         height: auto;
         aspect-ratio: 1;
         margin: 0;
@@ -1417,7 +1420,7 @@ img {
     .stories-swiper .swiper-pagination {
         right: var(--page-gutter);
         height: 20px;
-        gap: 2.5px;
+        gap: var(--pagination-gap);
     }
 
     .stories-swiper .swiper-pagination-bullet { width: 12px; height: 12px; }
@@ -1645,14 +1648,14 @@ img {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 2.5px;
+        gap: var(--pagination-gap);
         bottom: 0;
         height: 16px;
         padding-inline: 3px;
     }
 
     .certificates-swiper .swiper-pagination .swiper-pagination-bullet {
-        width: min(9px, calc((100% - 67.5px) / 28));
+        width: min(9px, calc((100% - 27 * var(--pagination-gap)) / 28));
         height: auto;
         aspect-ratio: 1;
         margin: 0;
