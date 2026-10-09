@@ -17,7 +17,7 @@ const customTime = document.querySelector(".time-select__custom");
 timeSelect.addEventListener("input", () => {
     const selected = Array.from(timeSelect.querySelectorAll("input:checked"), input => input.value);
     if (customTime.value.trim()) selected.push(customTime.value.trim());
-    timeValue.textContent = selected.join(", ") || "Выберите время";
+    timeValue.textContent = selected.join(", ");
     timeValue.dataset.placeholder = String(selected.length === 0);
     timeValue.title = timeValue.textContent;
 });
@@ -81,8 +81,8 @@ applicationForm.addEventListener("submit", async event => {
                 : "Не удалось отправить заявку. Попробуйте ещё раз позже.");
         }
         applicationForm.reset();
-        timeValue.textContent = "Выберите время";
-        timeValue.dataset.placeholder = "true";
+        timeValue.textContent = "";
+        delete timeValue.dataset.placeholder;
         timeValue.removeAttribute("title");
         timeSelect.open = false;
         status.dataset.state = "success";

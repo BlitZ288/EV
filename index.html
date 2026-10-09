@@ -15,7 +15,7 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="styles.css?v=20261005-mobile-2">
+    <link rel="stylesheet" href="styles.css?v=20261005-mobile-3">
 
     <title>Document</title>
 </head>
@@ -27,17 +27,24 @@
             </div>
 
             <nav class="nav" id="main-navigation">
-                <a href="#about">Обо мне</a>
-                <a href="#lessons">О занятиях</a>
-                <a href="#prices">Форматы и цены</a>
-                <a href="#results">Результаты</a>
-                <a href="#reviews">Отзывы</a>
-                <a href="https://t.me/sugary_smell"><img src="assets/icons/tg.svg" alt="телеграмм"></a>
+                <div class="nav__links">
+                    <a href="#about">Обо мне</a>
+                    <a href="#lessons">О занятиях</a>
+                    <a href="#prices">Форматы и цены</a>
+                    <a href="#results">Результаты</a>
+                    <a href="#reviews">Отзывы</a>
+                </div>
+                <a class="nav__desktop-social" href="https://t.me/sugary_smell"><img src="assets/icons/tg.svg" alt="Telegram"></a>
+                <div class="nav__socials" aria-label="Социальные сети">
+                    <a href="https://t.me/sugary_smell" aria-label="Telegram"><img src="assets/icons/menu-tg.svg" alt=""></a>
+                    <span class="nav__social-placeholder"><img src="assets/icons/menu-vk.svg" alt="ВКонтакте"></span>
+                </div>
             </nav>
             <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Открыть меню">
                 <span></span>
                 <span></span>
                 <span></span>
+                <img class="menu-toggle__close" src="assets/icons/menu-close.svg" alt="">
             </button>
         </div>
     </header>
@@ -499,7 +506,7 @@
                                 <span id="time-label" class="form__label">Удобное время занятий</span>
                                 <details class="time-select">
                                     <summary class="form__select" aria-labelledby="time-label time-value">
-                                        <span id="time-value" data-placeholder="true">Выберите время</span>
+                                        <span id="time-value"></span>
                                         <img src="assets/icons/select-arrow.svg" alt="" class="time-select__arrow">
                                     </summary>
                                     <div class="time-select__options" role="group" aria-labelledby="time-label">
@@ -705,6 +712,6 @@
     </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="script.js?v=20261005-mobile"></script>
+<script src="script.js?v=20261005-mobile-3"></script>
 </body>
 </html>
