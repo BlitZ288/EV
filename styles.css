@@ -45,6 +45,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
 
 h1 {
@@ -98,6 +99,9 @@ img {
 }
 
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
     background: var(--color-white);
 }
 
@@ -388,19 +392,27 @@ img {
 
 .certificates-swiper .swiper-pagination {
     bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5px;
+    padding-inline: 3px;
 }
 
-.certificates-swiper .swiper-pagination-bullet {
+.certificates-swiper .swiper-pagination .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
+    margin: 0;
 
     opacity: 1;
 
     background-color: var(--color-sky);
 }
 
-.certificates-swiper .swiper-pagination-bullet-active {
+.certificates-swiper .swiper-pagination .swiper-pagination-bullet-active {
     background-color: var(--color-night);
+    outline: 1px solid var(--color-night);
+    outline-offset: 2px;
 }
 
 /*price*/
@@ -435,6 +447,10 @@ img {
 
 .card__border{
     border: 1px solid var(--color-night);
+}
+
+.card.card--wide.card__small.togl.card__border .advantage {
+    gap: 38px;
 }
 
 .price .togl .card__header {
@@ -818,10 +834,10 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 2.5px;
 }
 
-.stories-swiper .swiper-pagination-bullet {
+.stories-swiper .swiper-pagination .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
     margin: 0;
@@ -842,7 +858,7 @@ img {
     outline-offset: 2px;
 }
 
-.stories-swiper .swiper-pagination-bullet-active {
+.stories-swiper .swiper-pagination .swiper-pagination-bullet-active {
     background: var(--color-night);
     outline: 1px solid var(--color-night);
     outline-offset: 2px;
@@ -997,7 +1013,7 @@ img {
 .terms-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: center;
+    align-items: stretch;
     gap: var(--card-gap);
     margin: 0;
     padding: 0;
@@ -1045,6 +1061,7 @@ img {
     }
 
     html {
+        scroll-padding-top: 44px;
         scrollbar-width: none;
     }
 
@@ -1058,7 +1075,6 @@ img {
     h3 { line-height: 1.2; }
 
     .header {
-        position: relative;
         z-index: 20;
         box-shadow: 0 4px 2px rgb(38 66 131 / 5%);
     }
@@ -1275,12 +1291,12 @@ img {
         height: 12px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 2px;
+        justify-content: center;
+        gap: 2.5px;
     }
 
-    .certificates-swiper .swiper-pagination-bullet {
-        width: min(8px, calc((100% - 54px) / 28));
+    .certificates-swiper .swiper-pagination .swiper-pagination-bullet {
+        width: min(8px, calc((100% - 67.5px) / 28));
         height: auto;
         aspect-ratio: 1;
         margin: 0;
@@ -1401,7 +1417,7 @@ img {
     .stories-swiper .swiper-pagination {
         right: var(--page-gutter);
         height: 20px;
-        gap: 6px;
+        gap: 2.5px;
     }
 
     .stories-swiper .swiper-pagination-bullet { width: 12px; height: 12px; }
@@ -1444,6 +1460,10 @@ img {
 /* Планшет: размеры и интервалы из Figma, фрейм 8:15007 (960px).
    Восемь колонок; промежутки между карточками — 20px. */
 @media (min-width: 768px) and (width < 1200px) {
+    html {
+        scroll-padding-top: 64px;
+    }
+
     :root {
         --font-size-title: 32px;
         --font-size-section: 28px;
@@ -1623,16 +1643,16 @@ img {
 
     .certificates-swiper .swiper-pagination {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
-        gap: 2px;
+        gap: 2.5px;
         bottom: 0;
         height: 16px;
         padding-inline: 3px;
     }
 
     .certificates-swiper .swiper-pagination .swiper-pagination-bullet {
-        width: min(9px, calc((100% - 54px) / 28));
+        width: min(9px, calc((100% - 67.5px) / 28));
         height: auto;
         aspect-ratio: 1;
         margin: 0;
