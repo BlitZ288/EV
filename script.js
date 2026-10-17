@@ -156,6 +156,57 @@ document.querySelectorAll(".stories-swiper").forEach(slider => {
     });
 });
 
+// Один просмотрщик для сертификатов и всех изображений отзывов.
+const imageViewer = document.createElement("dialog");
+imageViewer.className = "image-viewer";
+imageViewer.setAttribute("aria-label", "Увеличенное изображение");
+imageViewer.innerHTML = `<button type="button" class="image-viewer__close" aria-label="Закрыть увеличенное изображение" autofocus><img class="image-viewer__image" alt=""></button>`;
+document.body.append(imageViewer);
+const enlargedImage = imageViewer.querySelector("img");
+// Ширина непрозрачной области исходных PNG (все сертификаты имеют ширину 998px).
+const certificateContentWidths = [610, 609, 998, 998, 998, 610, 610, 610, 609, 611, 998, 998, 773, 610, 611, 662, 624, 998, 610, 998, 998, 998, 998, 623, 998, 998, 997, 622];
+let imageOpener;
+
+function openImage(image, keyboard = false) {
+    if (imageViewer.open) return;
+    imageOpener = image;
+    imageViewer.classList.toggle("image-viewer--keyboard", keyboard);
+    enlargedImage.src = image.dataset.src || image.currentSrc || image.src;
+    const certificateNumber = enlargedImage.src.match(/\/certs\/sert(\d+)\.png$/)?.[1];
+    const contentWidth = certificateContentWidths[Number(certificateNumber) - 1];
+    enlargedImage.style.setProperty("--image-width-scale", contentWidth ? 998 / contentWidth : 1);
+    enlargedImage.alt = image.alt;
+    document.documentElement.classList.add("image-viewer-open");
+    imageViewer.showModal();
+}
+
+imageViewer.addEventListener("click", () => imageViewer.close());
+imageViewer.addEventListener("keydown", () => imageViewer.classList.add("image-viewer--keyboard"));
+imageViewer.addEventListener("close", () => {
+    document.documentElement.classList.remove("image-viewer-open");
+    enlargedImage.removeAttribute("src");
+    imageOpener?.focus({ preventScroll: true });
+});
+
+document.querySelectorAll(".certificate, .review-card img").forEach(image => {
+    image.tabIndex = 0;
+    image.setAttribute("role", "button");
+    image.setAttribute("aria-haspopup", "dialog");
+    image.setAttribute("aria-label", `Увеличить: ${image.alt}`);
+    image.draggable = false;
+    image.addEventListener("click", () => {
+        // Swiper отличает нажатие от завершения жеста перелистывания.
+        if (image.closest(".swiper").swiper?.allowClick === false) return;
+        openImage(image);
+    });
+    image.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openImage(image, true);
+        }
+    });
+});
+
 document.querySelectorAll(".hero .button").forEach(button => {
     button.addEventListener("click", () => {
         applicationForm.scrollIntoView({ behavior: "smooth", block: "start" });
